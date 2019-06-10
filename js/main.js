@@ -20,17 +20,17 @@
   };
 
   function compareArrays(inputArray) {
-    if (inputArray.length = instructions.length) {
-      for (let i = 0; i < instructions.length; i++) {
-        if (inputArray[i] != instructions[i]) {
-          console.log("You lost :(");
-        } else {
-          console.log("You won!");
-        }
-      };
-    }
+    for (let i = 0; i < instructions.length; i++) {
+      if (inputArray[i] != instructions[i]) {
+        console.log ("You lost!");
+        return false;
+      }
+    };
+    console.log("Ok you won");
+    return true;
   }
 
   window.addEventListener("DOMContentLoaded",listenKeys);
+
 }());
 
