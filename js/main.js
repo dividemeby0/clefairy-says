@@ -1,36 +1,63 @@
 (function () {
   "use strict"
 
-  const instructions = ["up", "down", "up", "down"]
+  var instructions = ["up", "up", "down", "down", "left", "right"];
+  let boardContent = document.querySelector(".screen");
+
+  const newGame = new GameInput(instructions);
 
   function listenKeys() {
-    const allowedKeys = ["ArrowUp", "ArrowRight", "ArrowDown", "ArrowLeft"];
-    const inputArray = [];
-    window.addEventListener("keydown", function newInput(evt) {
-      // Creates the array according to the pressed keys. It can be no longer than the instructions array.
-      if (allowedKeys.includes(evt.key) && inputArray.length < instructions.length) {
+    let allowedKeys = ["ArrowUp", "ArrowRight", "ArrowDown", "ArrowLeft"];
+    window.addEventListener("keydown", (evt) => {
+      if (allowedKeys.includes(evt.key) && newGame.inputArray.length < instructions.length) {
         let direction = evt.key.split("Arrow").pop().toLocaleLowerCase();
-        inputArray.push(`${direction}`);
-        if (inputArray.length === instructions.length) {
-          console.log(inputArray);
-          compareArrays(inputArray);
-        }
-      }
+        newGame.newInputArray(direction);
+      };
     });
-  };
-
-  function compareArrays(inputArray) {
-    for (let i = 0; i < instructions.length; i++) {
-      if (inputArray[i] != instructions[i]) {
-        console.log ("You lost!");
-        return false;
-      }
-    };
-    console.log("Ok you won");
-    return true;
   }
 
-  window.addEventListener("DOMContentLoaded",listenKeys);
+  function displaySequence() {
+    for (let i=0; i < instructions.length; i++) {
+      switch (instructions[i]) {
+        case "up":
+          boardContent.innerHTML += '<img class="arrow" src="/img/arrow-icons/up-arrow.svg">';
+        break;
+        case "down":
+          boardContent.innerHTML += '<img class="arrow" src="/img/arrow-icons/down-arrow.svg">';
+        break;
+        case "right":
+          boardContent.innerHTML += '<img class="arrow" src="/img/arrow-icons/right-arrow.svg">';
+        break;
+        case "left":
+          boardContent.innerHTML += '<img class="arrow" src="/img/arrow-icons/left-arrow.svg">';
+        break;
+      }
+    }
+  }
+
+  turnInitiate ()
+
+  // press of a button -> Listen up! -> then display sequence, then sequence disappears.
+  function turnInitiate() {
+    listenUp();
+    displaySequence();
+    disappearSequence();  
+  }
+
+  function disappearSequence() {
+    setTimeout(() => {
+      boardContent.innerHTML = "";
+    },10000);
+  }
+
+  function listenUp() {
+    boardContent.innerHTML = `<h1>Try to memorize the instructions!</h1>`
+    setTimeout(() => {
+      boardContent.innerHTML = "";
+    }, 3000);
+  }
+
+  window.addEventListener("DOMContentLoaded", listenKeys);
 
 }());
 

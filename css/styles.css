@@ -1,5 +1,132 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#my-game {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-family: 'Righteous', cursive;
+  background-color: lightpink;
+  height: 100vh;
+  width: 100%;
+}
+
+p#teacher-image {
+  margin: 0 !important;
+}
+
+#my-game-container {
+  display: flex;
+  width: 95%;
+  align-items: center;
+  flex-direction: column;
+}
+
+#title-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#clefairy-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 16px;
+}
+
 #teacher-image {
-  height: 125px;
-  width: 140px;
-  background: url(/img/sprite_sheetclefairysaysfull.png) 0px 0px;
+  height: 124px;
+  width: 142px;
+  background: url("/img/sprite_sheetclefairysaysfull.png") 0px 0px;
+}
+
+#title-container h1 {
+  font-size: 45px;
+  text-align: center;
+  margin: 20px 0;
+}
+
+#middle-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 85%;
+}
+
+#instruction-board {
+  align-items: center;
+  justify-items: center;
+}
+
+.frame {
+  display: flex;
+  justify-content: center;
+  width: 650px;
+  height: 300px;
+  background: #FAF6C6;
+  border-top: 1px solid #FAF6C6;
+  border-right: 1px solid #FAF6C6;
+  border-left: 1px solid #FAF6C6;
+  border-bottom: 6px solid #DBD69A;
+  box-shadow: 0px 2px 0px 0px rgba(0,0,0,0.75);
+  padding-top: 1.9%;
+
+}
+.screen {
+/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#005700+0,0c890c+99 */
+background: linear-gradient(to bottom, #007000 0%,#0c890c 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */width: 80%;
+height: 75%;
+border: 9px solid #61370B;
+border-radius: 5px;
+padding: 10px;
+}
+
+.arrow {
+  width: 50px;
+  margin: 12px;
+}
+
+.player {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.player-id {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.player-id p {
+  font-size: 22px;
+}
+
+.player-sprite {
+  height: 26px;
+  width: 18px;
+}
+
+#player1-sprite {
+  background: url(/img/pokemonrubysapphire_trainer-male_sheet.png) 0px 0px;
+}
+
+#player2-sprite {
+  background: url(/img/squirtle_sheet2.png) 0px 0px;
+}
+
+.player-score {
+  display: flex;
+  flex-direction: row;
+  height: 60px;
+  width: 111px;
+}
+
+.player-score img {
+  height: fit-content;
+  width: 37px;
 }

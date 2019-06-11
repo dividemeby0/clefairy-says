@@ -1,8 +1,7 @@
 var animationInterval;
-var spriteSheet = document.getElementById("teacher-image");
-spriteSheet.style.margin = "0px";
-var heightOfSpriteSheet = 496;
-var heightOfEachSprite = 124;
+var spriteSheet = document.getElementById("player1-sprite");
+var heightOfSpriteSheet = 176;
+var heightOfEachSprite = 28;
 
 function stopAnimation() {
   clearInterval(animationInterval);
@@ -10,7 +9,7 @@ function stopAnimation() {
 
 function startAnimation() {
   var position = heightOfEachSprite;
-  const speed = 600;
+  const speed = 800;
   const diff = heightOfEachSprite;
   animationInterval = setInterval(() => {
     spriteSheet.style.backgroundPosition = `0px -${position}px`;
