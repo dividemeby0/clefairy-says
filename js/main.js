@@ -1,17 +1,19 @@
 "use strict"
 
+var level = 4;
 var instructions = generateNewSeq();
-// ["up", "up", "down", "down", "left", "right"];
+
 var waitBetweenTurn = true;
-let boardContent = document.querySelector(".screen");
+var boardContent = document.querySelector(".screen");
 var turnResponseCount = 0;
+
+// variables à réinitialiser si nouvelle partie :
 const newGame = new GameInput(instructions);
 const newGame2 = new GameInput(instructions);
 
 function listenKeysPlayerOne(evt) {
     let allowedKeys = ["z", "d", "s", "q"];
     if (waitBetweenTurn) return;
-    console.log("not prevented")
     // window.addEventListener("keydown", (evt) => {
       let direction;
       if (allowedKeys.includes(evt.key) && newGame.inputArray.length < instructions.length) {
@@ -48,13 +50,13 @@ function listenKeysPlayerTwo(evt) {
 
 function initGame() {
   waitBetweenTurn = false;
-  console.log("ici", waitBetweenTurn, "turn count ???", turnResponseCount)
 }
 
 window.addEventListener("DOMContentLoaded", function() {
   window.addEventListener("keydown", (evt) => {
     listenKeysPlayerOne(evt);
     listenKeysPlayerTwo(evt);
+    console.log(level);
   });
   displaySequence(initGame);
 });
@@ -125,11 +127,10 @@ function updateScoreTwo() {
 function nextTurn(clbk) {
   turnResponseCount = 0;
   waitBetweenTurn = true;
+  difficultyIncrease();
   instructions = generateNewSeq();
   newGame.setInstructions(instructions);
   newGame2.setInstructions(instructions);
-  console.log(newGame)
-  console.log(newGame2);
   
   setTimeout(() => {
     boardContent.innerHTML = `<h1>Ready for a new set of instructions?</h1>`;
@@ -142,16 +143,23 @@ function nextTurn(clbk) {
 }
 
 function difficultyIncrease() {
-
+  if (level < 18) {
+    level += 2;
+  };
+  console.log(level)
 }
-//let level
 
 function generateNewSeq() {
   var newSeq = [];
   var dirArray = ["up", "down", "left", "right"];
-  for (let i=0; i <= 2; i++) {
+  for (let i=1; i <= level; i++) {
     var randomDir = dirArray[Math.floor(Math.random() * dirArray.length)];
     newSeq.push(randomDir);
   }
   return(newSeq);
+}
+
+function welcomeScreen() {
+
+  boardContent.innerHTML
 }

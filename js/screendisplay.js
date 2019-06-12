@@ -30,24 +30,36 @@ function displaySequence(goBackToMain) {
 
 function disappearSequence(goBackToDisplaySeq) {
   setTimeout(() => {
-    boardContent.innerHTML = `<h1 style="text-align:center; font-size:50px">Go!<h1>`;
+    boardContent.innerHTML = `<h1 style="text-align:center; font-size:70px">Go!<h1>`;
     goBackToDisplaySeq();
   }, disappearSequenceTimeout);
 }
 
 function scoreDisplay() {
   boardContent.innerHTML = "";
+  console.log(`score player 1 : ${newGame.playerScore}`);
+  console.log(`score player 2 : ${newGame2.playerScore}`);
   if (newGame.playerScore > 1 && newGame2.playerScore > 1) {
     boardContent.innerHTML += `<h1>Player 1 has ${newGame.playerScore} lives remaining</h1><h1>Player 2 has ${newGame2.playerScore} lives remaining</h1>`;
-  } else if (newGame.playerScore == 1 && newGame2.playerScore > 1) {
+  } else if (newGame.playerScore === 1 && newGame2.playerScore > 1) {
     boardContent.innerHTML += `<h1>Player 1 has ${newGame.playerScore} life remaining</h1><h1>Player 2 has ${newGame2.playerScore} lives remaining</h1>`;
-  } else if (newGame.playerScore > 1 && newGame2.playerScore == 1) {
+  } else if (newGame.playerScore > 1 && newGame2.playerScore === 1) {
     boardContent.innerHTML += `<h1>Player 1 has ${newGame.playerScore} lives remaining</h1><h1>Player 2 has ${newGame2.playerScore} life remaining</h1>`;
-  } else if (newGame.playerScore == 0 && newGame2.playerScore > 0) {
+  } else if (newGame.playerScore === 1 && newGame2.playerScore === 1) {
+    boardContent.innerHTML += `<h1>Player 1 has ${newGame.playerScore} life remaining</h1><h1>Player 2 has ${newGame2.playerScore} life remaining</h1>`;
+  } else if (newGame.playerScore === 0 && newGame2.playerScore > 0) {
     boardContent.innerHTML += `<h1>Player 1 has lost!</h1><h1>Player 2, you're the winner!</h1>`;
-  } else if (newGame.playerScore > 0 && newGame2.playerScore == 0) {
+  } else if (newGame.playerScore > 0 && newGame2.playerScore === 0) {
     boardContent.innerHTML += `<h1>Player 2 has lost!</h1><h1>Player 1, you're the winner!</h1>`;
+  } else if (newGame.playerScore === 0 && newGame2.playerScore === 0) {
+    boardContent.innerHTML += `<h1>You both lost!</h1><h1>Clefairy thinks you're both losers...</h1>`;
   };
+}
+
+function gameOver() {
+  setTimeout(() => {
+    boardContent.innerHTML = `<h1 style="text-align:center; font-size:50px">Play again?<h1>`;
+  }, 2500);
 }
 
   // press of a button -> Listen up! -> then display sequence, then sequence disappears.
