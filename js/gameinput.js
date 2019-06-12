@@ -5,16 +5,26 @@ class GameInput {
     this.inputArray = [];
   }
 
-  newInputArray(direction) {
+  newInputArray(direction, clbk) {
     // Creates the array according to the pressed keys. It can be no longer than the instructions array.
+    console.log("BEFORE", this.inputArray)
     this.inputArray.push(`${direction}`);
-
+    console.log(this.inputArray)
     if (this.inputArray.length === this.instructions.length) {
+      console.log("TURNNNN FINISHED")
       // console.log(this.inputArray);
       const hasErrors = this.compareArrays(); // returns true or false
-      if (hasErrors) this.playerScore--;
-      console.log(this.playerScore);
+      if (hasErrors) {
+        this.playerScore -= 1;
+      }
+      this.inputArray = [];
+      clbk();
+      // console.log(this.playerScore);
     }
+  }
+  //
+  setInstructions(instr) {
+    this.instructions = instr;
   }
 
   compareArrays() {

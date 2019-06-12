@@ -9,7 +9,7 @@ body {
   align-items: center;
   flex-direction: column;
   font-family: 'Righteous', cursive;
-  background-color: lightpink;
+  background-color: rgba(255, 182, 193, 0.774);
   height: 100vh;
   width: 100%;
 }
@@ -83,6 +83,12 @@ height: 75%;
 border: 9px solid #61370B;
 border-radius: 5px;
 padding: 10px;
+color: #F3F2F2;
+}
+
+.screen h1 {
+  font-size: 30px;
+  text-align: center;
 }
 
 .arrow {
