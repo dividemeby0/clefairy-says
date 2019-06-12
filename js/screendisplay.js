@@ -58,8 +58,13 @@ function scoreDisplay() {
 
 function gameOver() {
   setTimeout(() => {
-    boardContent.innerHTML = `<h1 style="text-align:center; font-size:50px">Play again?<h1>`;
+    boardContent.innerHTML = `<h1 style="text-align:center; font-size:50px">Play again?<h1><h1>Press space bar to start new game</h1>`;
   }, 2500);
+  // window.addEventListener("keydown", function(event) {
+  //   if (event.key == " ") {
+  //     playAgain(initGame);
+  //   }
+  // }
 }
 
   // press of a button -> Listen up! -> then display sequence, then sequence disappears.
