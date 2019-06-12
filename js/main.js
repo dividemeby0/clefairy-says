@@ -58,7 +58,12 @@ window.addEventListener("DOMContentLoaded", function() {
     listenKeysPlayerTwo(evt);
     console.log(level);
   });
-  displaySequence(initGame);
+  window.addEventListener("keydown", function(event) {
+      if (event.key == " ") {
+        displaySequence(initGame);
+      }
+    }  
+  ); 
 });
 
 function checkTurnResponseCount() {
@@ -159,7 +164,7 @@ function generateNewSeq() {
   return(newSeq);
 }
 
-function welcomeScreen() {
+// function welcomeScreen() {
 
-  boardContent.innerHTML
-}
+//   boardContent.innerHTML
+// }

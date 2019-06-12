@@ -91,6 +91,11 @@ color: #F3F2F2;
   text-align: center;
 }
 
+.screen h2 {
+  font-size: 20px;
+  text-align: center;
+}
+
 .arrow {
   width: 60px;
   margin: 12px;
