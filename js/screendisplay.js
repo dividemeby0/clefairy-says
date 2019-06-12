@@ -46,11 +46,10 @@ function disappearSequence(goBackToDisplaySeq) {
   // }
 
   // press of a button -> Listen up! -> then display sequence, then sequence disappears.
-function turnInitiate() {
-  // listenUp();
-  displaySequence();
-  disappearSequence();  
-}
-
+// function turnInitiate() {
+//   // listenUp();
+//   displaySequence();
+//   disappearSequence();  
+// }
 
 

@@ -18,24 +18,14 @@ class GameInput {
   }
 
   compareArrays() {
-    var errors = 0;
     // Compares the array with the instructions array and removes one point if it's wrong
     for (let i = 0; i < this.instructions.length; i++) {
       if (this.inputArray[i] != this.instructions[i]) {
         console.log ("You lost a point!");
-        // this.playerScore--;
-        errors++;
+        return true
       }
     };
     console.log("Ok you won this turn");
-    return errors === 0;
-  }
-
-  pointloss() {
-    if (!this.compareArrays()) {
-      this.playerScore -= 1;
-      console.log(playerScore);
-      return true;
-    };
+    return false
   }
 }
