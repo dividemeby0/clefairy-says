@@ -4,9 +4,9 @@ spriteSheet.style.margin = "0px";
 var heightOfSpriteSheet = 496;
 var heightOfEachSprite = 124;
 
-function stopAnimation() {
-  clearInterval(animationInterval);
-}
+// function stopAnimation() {
+//   clearInterval(animationInterval);
+// }
 
 function startAnimation() {
   var position = heightOfEachSprite;

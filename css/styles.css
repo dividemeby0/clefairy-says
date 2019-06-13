@@ -118,16 +118,16 @@ color: #F3F2F2;
 }
 
 .player-sprite {
-  height: 26px;
-  width: 18px;
+  height: 41px;
+  width: 64px;
 }
 
 #player1-sprite {
-  background: url(/img/pokemonrubysapphire_trainer-male_sheet.png) 0px 0px;
+  background: url(/img/pikachusprites.png) 0px 0px;
 }
 
 #player2-sprite {
-  background: url(/img/squirtle_sheet2.png) 0px 0px;
+  background: url(/img/bulba-sprite.png) 0px 0px;
 }
 
 .player-score {
