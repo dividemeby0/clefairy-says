@@ -1,4 +1,4 @@
-const disappearSequenceTimeout = 2000;
+var disappearSequenceTimeout = 2000;
 
 function displaySequence(goBackToMain) {
   boardContent.innerHTML = `<h1>Try to memorize the instructions!</h1>`
@@ -37,8 +37,6 @@ function disappearSequence(goBackToDisplaySeq) {
 
 function scoreDisplay() {
   boardContent.innerHTML = "";
-  console.log(`score player 1 : ${newGame.playerScore}`);
-  console.log(`score player 2 : ${newGame2.playerScore}`);
   if (newGame.playerScore > 1 && newGame2.playerScore > 1) {
     boardContent.innerHTML += `<h1>Player 1 has ${newGame.playerScore} lives remaining</h1><h1>Player 2 has ${newGame2.playerScore} lives remaining</h1>`;
   } else if (newGame.playerScore === 1 && newGame2.playerScore > 1) {
@@ -59,17 +57,10 @@ function scoreDisplay() {
 function gameOver() {
   setTimeout(() => {
     boardContent.innerHTML = `<h1 style="text-align:center; font-size:50px">Play again?<h1><h1>Press space bar to start new game</h1>`;
+    window.addEventListener("keydown", function(event) {
+      if (event.key == " ") {
+        playAgain(initGame);
+      };
+    });
   }, 2500);
-  // window.addEventListener("keydown", function(event) {
-  //   if (event.key == " ") {
-  //     playAgain(initGame);
-  //   }
-  // }
 }
-
-  // press of a button -> Listen up! -> then display sequence, then sequence disappears.
-// function turnInitiate() {
-//   // listenUp();
-//   displaySequence();
-//   disappearSequence();  
-// }

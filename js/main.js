@@ -8,8 +8,8 @@ var boardContent = document.querySelector(".screen");
 var turnResponseCount = 0;
 
 // variables à réinitialiser si nouvelle partie :
-const newGame = new GameInput(instructions);
-const newGame2 = new GameInput(instructions);
+var newGame = new GameInput(instructions);
+var newGame2 = new GameInput(instructions);
 
 function listenKeysPlayerOne(evt) {
     let allowedKeys = ["z", "d", "s", "q"];
@@ -150,6 +150,7 @@ function nextTurn(clbk) {
 function difficultyIncrease() {
   if (level < 18) {
     level += 2;
+    disappearSequenceTimeout += 500;
   };
   console.log(level)
 }
@@ -164,7 +165,12 @@ function generateNewSeq() {
   return(newSeq);
 }
 
-// function welcomeScreen() {
 
-//   boardContent.innerHTML
-// }
+function playAgain(callback) {
+  level = 4;
+  newGame = new GameInput(instructions);
+  newGame2 = new GameInput(instructions);
+  updateScoreOne();
+  updateScoreTwo(); 
+  displaySequence(callback);
+}

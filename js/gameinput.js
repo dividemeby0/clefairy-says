@@ -7,11 +7,9 @@ class GameInput {
 
   newInputArray(direction, clbk) {
     // Creates the array according to the pressed keys. It can be no longer than the instructions array.
-    console.log("BEFORE", this.inputArray)
     this.inputArray.push(`${direction}`);
     console.log(this.inputArray)
     if (this.inputArray.length === this.instructions.length) {
-      console.log("TURNNNN FINISHED")
       // console.log(this.inputArray);
       const hasErrors = this.compareArrays(); // returns true or false
       if (hasErrors) {
