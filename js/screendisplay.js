@@ -57,9 +57,10 @@ function scoreDisplay() {
 function gameOver() {
   setTimeout(() => {
     boardContent.innerHTML = `<h1 style="text-align:center; font-size:50px">Play again?<h1><h1>Press space bar to start new game</h1>`;
-    window.addEventListener("keydown", function(event) {
+    document.addEventListener("keydown", function(event) {
       if (event.key == " ") {
-        playAgain(initGame);
+        playAgain();
+        console.log(`Here's the new sequence: ${instructions}`);
       };
     });
   }, 2500);

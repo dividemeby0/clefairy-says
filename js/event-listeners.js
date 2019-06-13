@@ -1,0 +1,50 @@
+function listenKeysPlayerOne(evt) {
+  let allowedKeys = ["z", "d", "s", "q"];
+  if (waitBetweenTurn) return;
+  // window.addEventListener("keydown", (evt) => {
+    let direction;
+    if (allowedKeys.includes(evt.key) && newGame.inputArray.length < instructions.length) {
+      switch (evt.key) {
+        case "z":
+          direction = "up";
+        break;
+        case "d":
+          direction = "right";
+        break;
+        case "s":
+          direction = "down";
+        break;
+        case "q":
+          direction = "left";
+        break;
+      };
+      newGame.newInputArray(direction, updateScoreOne);
+    };
+  // });
+}
+
+function listenKeysPlayerTwo(evt) {
+  let allowedKeys2 = ["ArrowUp", "ArrowRight", "ArrowDown", "ArrowLeft"];
+  if (waitBetweenTurn) return;
+  // window.addEventListener("keydown", (evt) => {
+    // console.log(evt);
+    if (allowedKeys2.includes(evt.key) && newGame2.inputArray.length < instructions.length) {
+      let direction2 = evt.key.split("Arrow").pop().toLocaleLowerCase();
+      newGame2.newInputArray(direction2, updateScoreTwo);
+    };
+  // });
+}
+
+window.addEventListener("DOMContentLoaded", function() {
+  window.addEventListener("keydown", (evt) => {
+    listenKeysPlayerOne(evt);
+    listenKeysPlayerTwo(evt);
+    console.log(level);
+  });
+  window.addEventListener("keydown", function(event) {
+      if (event.key == " ") {
+        displaySequence(initGame);
+      }
+    }  
+  ); 
+});

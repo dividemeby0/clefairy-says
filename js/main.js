@@ -7,64 +7,16 @@ var waitBetweenTurn = true;
 var boardContent = document.querySelector(".screen");
 var turnResponseCount = 0;
 
-// variables à réinitialiser si nouvelle partie :
 var newGame = new GameInput(instructions);
 var newGame2 = new GameInput(instructions);
 
-function listenKeysPlayerOne(evt) {
-    let allowedKeys = ["z", "d", "s", "q"];
-    if (waitBetweenTurn) return;
-    // window.addEventListener("keydown", (evt) => {
-      let direction;
-      if (allowedKeys.includes(evt.key) && newGame.inputArray.length < instructions.length) {
-        switch (evt.key) {
-          case "z":
-            direction = "up";
-          break;
-          case "d":
-            direction = "right";
-          break;
-          case "s":
-            direction = "down";
-          break;
-          case "q":
-            direction = "left";
-          break;
-        };
-        newGame.newInputArray(direction, updateScoreOne);
-      };
-    // });
-}
-
-function listenKeysPlayerTwo(evt) {
-    let allowedKeys2 = ["ArrowUp", "ArrowRight", "ArrowDown", "ArrowLeft"];
-    if (waitBetweenTurn) return;
-    // window.addEventListener("keydown", (evt) => {
-      // console.log(evt);
-      if (allowedKeys2.includes(evt.key) && newGame2.inputArray.length < instructions.length) {
-        let direction2 = evt.key.split("Arrow").pop().toLocaleLowerCase();
-        newGame2.newInputArray(direction2, updateScoreTwo);
-      };
-    // });
-}
+// Turn : 1) Input 2) Compare arrays Once everyone has input a sequence :
+// 3) Did you lose any points? 4) Update score bar 5) Put scores on screen
+// 6) Loop the fuck back!!!
 
 function initGame() {
   waitBetweenTurn = false;
 }
-
-window.addEventListener("DOMContentLoaded", function() {
-  window.addEventListener("keydown", (evt) => {
-    listenKeysPlayerOne(evt);
-    listenKeysPlayerTwo(evt);
-    console.log(level);
-  });
-  window.addEventListener("keydown", function(event) {
-      if (event.key == " ") {
-        displaySequence(initGame);
-      }
-    }  
-  ); 
-});
 
 function checkTurnResponseCount() {
   console.log("turn response count", turnResponseCount);
@@ -77,56 +29,6 @@ function checkTurnResponseCount() {
       nextTurn(initGame);
     }
   }
-}
-
-// Turn : 1) Input 2) Compare arrays Once everyone has input a sequence :
-// 3) Did you lose any points? 4) Update score bar 5) Put scores on screen
-// 6) Loop the fuck back!!!
-
-function updateScoreOne() {
-  let scorebar = document.querySelector("#player1-score");
-  if (newGame.playerScore == 3) {
-    scorebar.innerHTML = `<img src="/img/sprite_sheetclefairysays_ballclosed.png" alt="">
-    <img src="/img/sprite_sheetclefairysays_ballclosed.png" alt="">
-    <img src="/img/sprite_sheetclefairysays_ballclosed.png" alt="">`;
-  } else if (newGame.playerScore == 2) {
-    scorebar.innerHTML = `<img src="/img/sprite_sheetclefairysays_ballopen.png" alt="">
-    <img src="/img/sprite_sheetclefairysays_ballclosed.png" alt="">
-    <img src="/img/sprite_sheetclefairysays_ballclosed.png" alt="">`;
-  } else if (newGame.playerScore == 1) {
-    scorebar.innerHTML = `<img src="/img/sprite_sheetclefairysays_ballopen.png" alt="">
-    <img src="/img/sprite_sheetclefairysays_ballopen.png" alt="">
-    <img src="/img/sprite_sheetclefairysays_ballclosed.png" alt="">`;
-  } else if (newGame.playerScore == 0) {
-    scorebar.innerHTML = `<img src="/img/sprite_sheetclefairysays_ballopen.png" alt="">
-    <img src="/img/sprite_sheetclefairysays_ballopen.png" alt="">
-    <img src="/img/sprite_sheetclefairysays_ballopen.png" alt="">`;
-  };
-  turnResponseCount++;
-  checkTurnResponseCount()
-}
-
-function updateScoreTwo() {
-  let scorebar = document.querySelector("#player2-score");
-  if (newGame2.playerScore == 3) {
-    scorebar.innerHTML = `<img src="/img/sprite_sheetclefairysays_ballclosed.png" alt="">
-    <img src="/img/sprite_sheetclefairysays_ballclosed.png" alt="">
-    <img src="/img/sprite_sheetclefairysays_ballclosed.png" alt="">`;
-  } else if (newGame2.playerScore == 2) {
-    scorebar.innerHTML = `<img src="/img/sprite_sheetclefairysays_ballopen.png" alt="">
-    <img src="/img/sprite_sheetclefairysays_ballclosed.png" alt="">
-    <img src="/img/sprite_sheetclefairysays_ballclosed.png" alt="">`;
-  } else if (newGame2.playerScore == 1) {
-    scorebar.innerHTML = `<img src="/img/sprite_sheetclefairysays_ballopen.png" alt="">
-    <img src="/img/sprite_sheetclefairysays_ballopen.png" alt="">
-    <img src="/img/sprite_sheetclefairysays_ballclosed.png" alt="">`;
-  } else if (newGame2.playerScore == 0) {
-    scorebar.innerHTML = `<img src="/img/sprite_sheetclefairysays_ballopen.png" alt="">
-    <img src="/img/sprite_sheetclefairysays_ballopen.png" alt="">
-    <img src="/img/sprite_sheetclefairysays_ballopen.png" alt="">`;
-  };
-  turnResponseCount++;
-  checkTurnResponseCount()
 }
 
 function nextTurn(clbk) {
@@ -149,7 +51,7 @@ function nextTurn(clbk) {
 
 function difficultyIncrease() {
   if (level < 18) {
-    level += 2;
+    level += 1;
     disappearSequenceTimeout += 500;
   };
   console.log(level)
@@ -165,12 +67,13 @@ function generateNewSeq() {
   return(newSeq);
 }
 
-
-function playAgain(callback) {
+function playAgain() {
   level = 4;
+  instructions = generateNewSeq();
   newGame = new GameInput(instructions);
   newGame2 = new GameInput(instructions);
   updateScoreOne();
-  updateScoreTwo(); 
-  displaySequence(callback);
+  updateScoreTwo();
+  waitBetweenTurn = true;
+  turnResponseCount = 0;
 }
