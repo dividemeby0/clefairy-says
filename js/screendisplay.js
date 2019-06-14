@@ -60,7 +60,7 @@ function gameOver() {
     document.addEventListener("keydown", function(event) {
       if (event.key == " ") {
         playAgain();
-        console.log(`Here's the new sequence: ${instructions}`);
+        // console.log(`Here's the new sequence: ${instructions}`);
       };
     });
   }, 2500);

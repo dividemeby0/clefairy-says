@@ -39,7 +39,7 @@ window.addEventListener("DOMContentLoaded", function() {
   window.addEventListener("keydown", (evt) => {
     listenKeysPlayerOne(evt);
     listenKeysPlayerTwo(evt);
-    console.log(level);
+    // console.log(level);
   });
   window.addEventListener("keydown", function(event) {
       if (event.key == " ") {

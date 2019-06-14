@@ -2,11 +2,9 @@
 
 var level = 4;
 var instructions = generateNewSeq();
-
 var waitBetweenTurn = true;
 var boardContent = document.querySelector(".screen");
 var turnResponseCount = 0;
-
 var newGame = new GameInput(instructions);
 var newGame2 = new GameInput(instructions);
 
@@ -19,9 +17,9 @@ function initGame() {
 }
 
 function checkTurnResponseCount() {
-  console.log("turn response count", turnResponseCount);
+  // console.log("turn response count", turnResponseCount);
   if (turnResponseCount === 2) {
-    console.log("both played")
+    // console.log("both played")
     scoreDisplay();
     if (newGame.playerScore === 0 || newGame2.playerScore === 0) {
       gameOver();
@@ -54,7 +52,7 @@ function difficultyIncrease() {
     level += 1;
     disappearSequenceTimeout += 500;
   };
-  console.log(level)
+  // console.log(level)
 }
 
 function generateNewSeq() {
