@@ -9,16 +9,16 @@ function displaySequence(goBackToMain) {
     for (let i=0; i < instructions.length; i++) {
       switch (instructions[i]) {
         case "up":
-          boardContent.innerHTML += '<img class="arrow" src="/img/arrow-icons/up-arrow.svg">';
+          boardContent.innerHTML += '<img class="arrow" src="./img/arrow-icons/up-arrow.svg">';
         break;
         case "down":
-          boardContent.innerHTML += '<img class="arrow" src="/img/arrow-icons/down-arrow.svg">';
+          boardContent.innerHTML += '<img class="arrow" src="./img/arrow-icons/down-arrow.svg">';
         break;
         case "right":
-          boardContent.innerHTML += '<img class="arrow" src="/img/arrow-icons/right-arrow.svg">';
+          boardContent.innerHTML += '<img class="arrow" src="./img/arrow-icons/right-arrow.svg">';
         break;
         case "left":
-          boardContent.innerHTML += '<img class="arrow" src="/img/arrow-icons/left-arrow.svg">';
+          boardContent.innerHTML += '<img class="arrow" src="./img/arrow-icons/left-arrow.svg">';
         break;
       }
     }
