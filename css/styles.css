@@ -40,7 +40,7 @@ p#teacher-image {
 #teacher-image {
   height: 124px;
   width: 142px;
-  background: url(/home/camille/code/ironhack-bootcamp/Project-1/img/sprite_sheetclefairysaysfull.png) 0px 0px;
+  background: url("/home/camille/code/ironhack-bootcamp/Project-1/img/sprite_sheetclefairysaysfull.png") 0px 0px;
 }
 
 #title-container h1 {
@@ -123,11 +123,11 @@ color: #F3F2F2;
 }
 
 #player1-sprite {
-  background: url(/home/camille/code/ironhack-bootcamp/Project-1/img/pika-sprite.png) 0px 0px;
+  background: url("/home/camille/code/ironhack-bootcamp/Project-1/img/pika-sprite.png") 0px 0px;
 }
 
 #player2-sprite {
-  background: url(/home/camille/code/ironhack-bootcamp/Project-1/img/bulba-sprite.png) 0px 0px;
+  background: url("/home/camille/code/ironhack-bootcamp/Project-1/img/bulba-sprite.png") 0px 0px;
 }
 
 .player-score {
