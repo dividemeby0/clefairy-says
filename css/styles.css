@@ -123,11 +123,11 @@ color: #F3F2F2;
 }
 
 #player1-sprite {
-  background: url(./img/pika-sprite.png) 0px 0px;
+  background: url("./img/pika-sprite.png") 0px 0px;
 }
 
 #player2-sprite {
-  background: url(./img/bulba-sprite.png) 0px 0px;
+  background: url("./img/bulba-sprite.png") 0px 0px;
 }
 
 .player-score {
