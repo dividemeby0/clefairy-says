@@ -1,4 +1,4 @@
-var disappearSequenceTimeout = 2000;
+var disappearSequenceTimeout = 2500;
 
 function displaySequence(goBackToMain) {
   boardContent.innerHTML = `<h1>Try to memorize the instructions!</h1>`
